@@ -162,14 +162,16 @@ def completed(board):
 def start():
     """キー入力・ステージ進行を管理する。戻り値：なし。"""
     index = 0
+    total_steps = 0
     board = new_board(MAP_TEXT[index])
     while True:
         print_board(board)
         if completed(board):
-            print("ステージクリア！")
+            total_steps += board["steps"]
+            print(f"ステージクリア！ 手数: {board['steps']}")
             index += 1
             if index == len(MAP_TEXT):
-                print("全ステージクリア！")
+                print(f"全ステージクリア！ 合計手数: {total_steps}")
                 break
             input("Enterで次のステージへ...")
             board = new_board(MAP_TEXT[index])
