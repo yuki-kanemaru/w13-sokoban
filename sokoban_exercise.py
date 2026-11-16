@@ -75,6 +75,11 @@ def new_board(level_text):
     return board
 
 
+def remaining_crates(board):
+    """ゴールに乗っていない箱の数を返す。引数：board。戻り値：int。"""
+    return len(board["crates"] - board["targets"])
+
+
 def print_board(board):
     """現在の盤面を画面に表示する。引数：board。戻り値：なし。"""
     width, height = board["size"]
@@ -95,7 +100,7 @@ def print_board(board):
             else:
                 output += " "
         print(output)
-    print(f"移動回数: {board['steps']} | WASD 移動 / U 戻す / R 再開 / Q 終了")
+    print(f"移動回数: {board['steps']} | 残りの箱: {remaining_crates(board)} | WASD 移動 / U 戻す / R 再開 / Q 終了")
 
 
 def in_field(board, point):
