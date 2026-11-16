@@ -176,8 +176,11 @@ def start():
             board = new_board(MAP_TEXT[index])
         elif key == "u":
             step_back(board)
+        elif key in KEY_TO_VECTOR:
+            if not apply_move(board, key):
+                print("そこへは移動できません。")
         else:
-            apply_move(board, key)
+            print("WASD / U / R / Q のいずれかを入力してください。")
 
 
 if __name__ == "__main__":
